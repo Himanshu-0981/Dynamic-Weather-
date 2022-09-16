@@ -1,55 +1,60 @@
 import { useEffect, useState } from "react";
 import {
-    WiSunrise,
-    BsDropletHalf,
-    BiCloudDrizzle,
-    SiTailwindcss,
-    TiWeatherCloudy,
-    BsCloudDrizzle,
-    IoThunderstormOutline,
-    BsCloudHaze,
-    IoSunnyOutline
-  } from "react-icons/all";
+  WiSunrise,
+  BsDropletHalf,
+  BiCloudDrizzle,
+  SiTailwindcss,
+  TiWeatherCloudy,
+  BsCloudDrizzle,
+  IoThunderstormOutline,
+  BsCloudHaze,
+  IoSunnyOutline,
+  WiFog,
+  BsCloudRain,
+} from "react-icons/all";
 
 const Weather = (props) => {
-    const {weatherInfo} = props;
-    const  {
-        temp,
-        pressure,
-        humidity,
-        speed,
-        country,
-        sunrise,
-        city,
-        weatherMood,
-    } = weatherInfo
+  const { weatherInfo } = props;
+  const {
+    temp,
+    pressure,
+    humidity,
+    speed,
+    country,
+    sunrise,
+    city,
+    weatherMood,
+  } = weatherInfo;
 
-    const [weatherMoodInfo,setWeatherMoodInfo] = useState('');
-    
+  const [weatherMoodInfo, setWeatherMoodInfo] = useState("");
 
-    const myClassName = "h-40 mt-5 w-full bg-white pt-5 pb-5";
+  const myClassName = "h-40 mt-5 w-full bg-white pt-5 pb-5";
 
-    useEffect(()=>{
-        switch (weatherMood) {
-            case "Clouds":
-                setWeatherMoodInfo(<TiWeatherCloudy className={myClassName}/>)
-                break;
-            case "Thunderstorm":
-                setWeatherMoodInfo(<IoThunderstormOutline className={myClassName}/>)
-                break;
-            case "Haze":
-                setWeatherMoodInfo(<BsCloudHaze className={myClassName}/> )
-                break;
-            case "Clear":
-                setWeatherMoodInfo(<IoSunnyOutline className={myClassName}/> )
-                break;
-            case "Drizzle":
-                setWeatherMoodInfo(<BsCloudDrizzle className={myClassName}/>)
-            // default:
-            //     setWeatherMoodInfo(<IoSunnyOutline className={myClassName}/>);
-        }
-       
-    },[weatherMood])
+  useEffect(() => {
+    switch (weatherMood) {
+      case "Clouds":
+        setWeatherMoodInfo(<TiWeatherCloudy className={myClassName} />);
+        break;
+      case "Thunderstorm":
+        setWeatherMoodInfo(<IoThunderstormOutline className={myClassName} />);
+        break;
+      case "Haze":
+        setWeatherMoodInfo(<BsCloudHaze className={myClassName} />);
+        break;
+      case "Clear":
+        setWeatherMoodInfo(<IoSunnyOutline className={myClassName} />);
+        break;
+      case "Drizzle":
+        setWeatherMoodInfo(<BsCloudDrizzle className={myClassName} />);
+        break;
+      case "Mist":
+        setWeatherMoodInfo(<WiFog className={myClassName} />);
+        break;
+      case "Rain":
+        setWeatherMoodInfo(<BsCloudRain className={myClassName} />);
+        break;
+    }
+  }, [weatherMood]);
   return (
     <>
       <div className=" flex justify-center mt-10 flex-col items-center ">

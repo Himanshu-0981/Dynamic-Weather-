@@ -1,13 +1,12 @@
 import { useState, useEffect, useLayoutEffect } from "react";
-
 import Weather from "./Components/Weather";
-
+// import something from '-
 const App = () => {
   const [input, setInput] = useState("Mumbai");
   const [data, setData] = useState({});
 
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=debcccd68278ece68ac1307ea3166c95`;
   const handleSearch = async () => {
-    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=debcccd68278ece68ac1307ea3166c95`;
     try {
       const req = await fetch(URL);
       const res = await req.json();
@@ -17,7 +16,6 @@ const App = () => {
       const { country, sunrise } = res.sys;
       const { name: city } = res;
       const { main: weatherMood } = res.weather[0];
-
       const myWeatherInfo = {
         temp,
         pressure,
@@ -29,6 +27,7 @@ const App = () => {
         weatherMood,
       };
       setData(myWeatherInfo);
+      console.log(myWeatherInfo);
     } catch (err) {
       console.log(err);
     }
